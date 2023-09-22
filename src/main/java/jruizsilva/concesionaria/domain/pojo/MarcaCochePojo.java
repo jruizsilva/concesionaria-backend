@@ -1,13 +1,13 @@
-package jruizsilva.concesionaria.domain.dto;
+package jruizsilva.concesionaria.domain.pojo;
 
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- * DTO de marca_coche
+ * Pojo de marca_coche
  */
 @Getter @Setter
-public class MarcaCocheDTO {
+public class MarcaCochePojo {
     private Integer id;
     private String description;
 }

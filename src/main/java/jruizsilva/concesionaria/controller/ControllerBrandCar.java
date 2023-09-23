@@ -1,6 +1,6 @@
 package jruizsilva.concesionaria.controller;
 
-import jruizsilva.concesionaria.domain.pojo.PojoBrandCar;
+import jruizsilva.concesionaria.domain.dto.DtoBrandCar;
 import jruizsilva.concesionaria.domain.service.IServiceBrandCar;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,18 +16,18 @@ public class ControllerBrandCar {
   private final IServiceBrandCar serviceBrandCar;
   
   @GetMapping
-  public ResponseEntity<List<PojoBrandCar>> findAll() {
+  public ResponseEntity<List<DtoBrandCar>> findAll() {
     return ResponseEntity.status(HttpStatus.OK)
                          .body(serviceBrandCar.findAll());
   }
   
   @GetMapping(path = "/{id}")
-  public ResponseEntity<PojoBrandCar> findById(@PathVariable Integer id) {
+  public ResponseEntity<DtoBrandCar> findById(@PathVariable Integer id) {
     return ResponseEntity.of(serviceBrandCar.findById(id));
   }
   
   @PostMapping
-  public ResponseEntity<PojoBrandCar> save(@RequestBody PojoBrandCar body) {
+  public ResponseEntity<DtoBrandCar> save(@RequestBody DtoBrandCar body) {
     try {
       return ResponseEntity.status(HttpStatus.CREATED)
                            .body(serviceBrandCar.save(body));
@@ -38,7 +38,7 @@ public class ControllerBrandCar {
   }
   
   @PutMapping
-  public ResponseEntity<PojoBrandCar> update(@RequestBody PojoBrandCar body) {
+  public ResponseEntity<DtoBrandCar> update(@RequestBody DtoBrandCar body) {
     return ResponseEntity.of(serviceBrandCar.update(body));
   }
   

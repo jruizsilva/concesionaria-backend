@@ -33,7 +33,7 @@ public class ControllerBrandCar {
                                  .body(serviceBrandCar.save(pojoBrandCar));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                                 .body(null);
+                                 .build();
         }
     }
 }

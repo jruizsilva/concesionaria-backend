@@ -6,6 +6,8 @@ import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 /**
  * Mapper que transforma objetos de MarcaCoche a Pojos o entidades
  */
@@ -27,8 +29,24 @@ public interface IMarcaCocheMapper {
      * Convierte un Pojo MarcaCoche a una entidad
      *
      * @param marcaCochePojo Entidad a convertir
-     * @return Pojo convertido
+     * @return Pojos convertidos
      */
     @InheritInverseConfiguration
     MarcaCocheEntity toMarcaCocheEntity(MarcaCochePojo marcaCochePojo);
+
+    /**
+     * Convierte entidades MarcasCoche a una lista pojo
+     *
+     * @param marcasCocheEntities Entidades a transformar
+     * @return Lista de pojos
+     */
+    List<MarcaCochePojo> toMarcasCochePojo(List<MarcaCocheEntity> marcasCocheEntities);
+
+    /**
+     * Convierte pojos MarcaCoche a una lista de entidades
+     *
+     * @param marcaCochePojos Entidades a transformar
+     * @return Lista de entidades
+     */
+    List<MarcaCocheEntity> toMarcasCocheEntity(List<MarcaCochePojo> marcaCochePojos);
 }

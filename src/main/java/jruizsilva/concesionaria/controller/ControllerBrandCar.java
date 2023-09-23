@@ -50,6 +50,8 @@ public class ControllerBrandCar {
   
   @DeleteMapping(path = "/{id}")
   public ResponseEntity<Boolean> deleteById(@PathVariable Integer id) {
-    return new ResponseEntity<>(serviceBrandCar.deleteById(id) ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+    return new ResponseEntity<>(serviceBrandCar.deleteById(id) ?
+                                HttpStatus.OK :
+                                HttpStatus.NOT_FOUND);
   }
 }

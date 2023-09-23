@@ -6,11 +6,12 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "brands_car")
-@Getter @Setter
+@Getter
+@Setter
 public class EntityBrandCar {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    @Column(nullable = false)
-    private String description;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
+  @Column(nullable = false)
+  private String description;
 }

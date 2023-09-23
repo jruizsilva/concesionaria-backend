@@ -27,10 +27,10 @@ public class ControllerBrandCar {
   }
   
   @PostMapping
-  public ResponseEntity<PojoBrandCar> save(@RequestBody PojoBrandCar pojoBrandCar) {
+  public ResponseEntity<PojoBrandCar> save(@RequestBody PojoBrandCar body) {
     try {
       return ResponseEntity.status(HttpStatus.CREATED)
-                           .body(serviceBrandCar.save(pojoBrandCar));
+                           .body(serviceBrandCar.save(body));
     } catch (Exception e) {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                            .build();
@@ -38,14 +38,8 @@ public class ControllerBrandCar {
   }
   
   @PutMapping
-  public ResponseEntity<PojoBrandCar> update(@RequestBody PojoBrandCar pojoBrandCar) {
-    try {
-      return ResponseEntity.status(HttpStatus.OK)
-                           .body(serviceBrandCar.save(pojoBrandCar));
-    } catch (Exception e) {
-      return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                           .build();
-    }
+  public ResponseEntity<PojoBrandCar> update(@RequestBody PojoBrandCar body) {
+    return ResponseEntity.of(serviceBrandCar.update(body));
   }
   
   @DeleteMapping(path = "/{id}")

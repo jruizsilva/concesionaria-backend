@@ -29,12 +29,21 @@ public class ServiceBrandCarImpl implements IServiceBrandCar {
   }
   
   @Override
+  public Optional<PojoBrandCar> update(PojoBrandCar pojoBrandCar) {
+    if (repositoryBrandCar.findById(pojoBrandCar.getId())
+                          .isEmpty()) {
+      return Optional.empty();
+    }
+    return Optional.of(repositoryBrandCar.save(pojoBrandCar));
+  }
+  
+  @Override
   public boolean deleteById(Integer id) {
-    try {
-      repositoryBrandCar.deleteById(id);
-      return true;
-    } catch (Exception e) {
+    if (repositoryBrandCar.findById(id)
+                          .isEmpty()) {
       return false;
     }
+    repositoryBrandCar.deleteById(id);
+    return true;
   }
 }

@@ -7,7 +7,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "marca_coche")
 @Getter @Setter
-public class BrandCarEntity {
+public class EntityBrandCar {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

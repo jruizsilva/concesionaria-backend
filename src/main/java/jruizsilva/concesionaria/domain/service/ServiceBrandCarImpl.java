@@ -11,26 +11,30 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Service
 public class ServiceBrandCarImpl implements IServiceBrandCar {
-    private final IRepositoryBrandCar repositoryBrandCar;
-
-    @Override public List<PojoBrandCar> findAll() {
-        return repositoryBrandCar.findAll();
+  private final IRepositoryBrandCar repositoryBrandCar;
+  
+  @Override
+  public List<PojoBrandCar> findAll() {
+    return repositoryBrandCar.findAll();
+  }
+  
+  @Override
+  public Optional<PojoBrandCar> findById(Integer id) {
+    return repositoryBrandCar.findById(id);
+  }
+  
+  @Override
+  public PojoBrandCar save(PojoBrandCar pojoBrandCar) {
+    return repositoryBrandCar.save(pojoBrandCar);
+  }
+  
+  @Override
+  public boolean deleteById(Integer id) {
+    try {
+      repositoryBrandCar.deleteById(id);
+      return true;
+    } catch (Exception e) {
+      return false;
     }
-
-    @Override public Optional<PojoBrandCar> findById(Integer id) {
-        return repositoryBrandCar.findById(id);
-    }
-
-    @Override public PojoBrandCar save(PojoBrandCar pojoBrandCar) {
-        return repositoryBrandCar.save(pojoBrandCar);
-    }
-
-    @Override public boolean deleteById(Integer id) {
-        try {
-            repositoryBrandCar.deleteById(id);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
+  }
 }

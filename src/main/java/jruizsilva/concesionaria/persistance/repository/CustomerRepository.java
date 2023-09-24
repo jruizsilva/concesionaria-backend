@@ -3,10 +3,13 @@ package jruizsilva.concesionaria.persistance.repository;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Repository;
+
 import jruizsilva.concesionaria.domain.dto.CustomerDto;
 import jruizsilva.concesionaria.domain.repository.ICustomerRepository;
 import jruizsilva.concesionaria.persistance.mapper.ICustomerMapper;
 
+@Repository
 public class CustomerRepository implements ICustomerRepository {
 
   private final ICustomerRepositoryCrud customerRepositoryCrud;

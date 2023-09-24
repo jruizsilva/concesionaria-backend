@@ -3,11 +3,14 @@ package jruizsilva.concesionaria.domain.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import jruizsilva.concesionaria.domain.dto.CustomerDto;
 import jruizsilva.concesionaria.domain.dto.ResponseCustomerDto;
 import jruizsilva.concesionaria.domain.repository.ICustomerRepository;
 import jruizsilva.concesionaria.utils.PasswordGenerator;
 
+@Service
 public class CustomerServiceImpl implements ICustomerService {
   private final ICustomerRepository customerRepository;
   private final PasswordGenerator passwordGenerator;

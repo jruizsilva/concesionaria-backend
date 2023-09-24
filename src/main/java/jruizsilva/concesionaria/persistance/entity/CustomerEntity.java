@@ -11,14 +11,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "customer")
+@Table(name = "customers")
 public class CustomerEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String fullName;
   private String email;
-  private Double phoneNumber;
+  private String phone;
   private Integer active;
   private String password;
 }

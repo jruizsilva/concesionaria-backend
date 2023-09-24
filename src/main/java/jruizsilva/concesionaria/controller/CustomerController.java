@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(path = "customers")
+@RequestMapping(path = "/customers")
 public class CustomerController {
   private final ICustomerService customerService;
 
@@ -34,20 +34,15 @@ public class CustomerController {
     return ResponseEntity.of(customerService.findById(id));
   }
 
-  @GetMapping("/{email}")
+  @GetMapping("/email/{email}")
   public ResponseEntity<CustomerDto> findByEmail(@PathVariable String email) {
     return ResponseEntity.of(customerService.findByEmail(email));
   }
 
   @PostMapping
   public ResponseEntity<ResponseCustomerDto> save(@RequestBody CustomerDto customerDto) {
-    try {
-      return ResponseEntity.status(HttpStatus.CREATED)
-          .body(customerService.save(customerDto));
-    } catch (Exception e) {
-      return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-          .build();
-    }
+    return ResponseEntity.status(HttpStatus.CREATED)
+        .body(customerService.save(customerDto));
   }
 
   @PutMapping

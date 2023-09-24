@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import jruizsilva.concesionaria.domain.dto.CustomerDto;
 import jruizsilva.concesionaria.domain.dto.ResponseCustomerDto;
 import jruizsilva.concesionaria.domain.repository.ICustomerRepository;
+import jruizsilva.concesionaria.exception.EmailValidationException;
 import jruizsilva.concesionaria.utils.PasswordGenerator;
 
 @Service
@@ -37,6 +38,9 @@ public class CustomerServiceImpl implements ICustomerService {
 
   @Override
   public ResponseCustomerDto save(CustomerDto newCustomer) {
+    if (!newCustomer.getEmail().matches("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-]+)(\\.[a-zA-Z]{2,5}){1,2}$")) {
+      throw new EmailValidationException();
+    }
     String passwordGenerated = passwordGenerator.generatePassword();
     newCustomer.setPassword(passwordGenerated);
     newCustomer.setActive(1);

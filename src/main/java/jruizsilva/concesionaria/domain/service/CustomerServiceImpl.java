@@ -4,14 +4,17 @@ import java.util.List;
 import java.util.Optional;
 
 import jruizsilva.concesionaria.domain.dto.CustomerDto;
+import jruizsilva.concesionaria.domain.dto.ResponseCustomerDto;
 import jruizsilva.concesionaria.domain.repository.ICustomerRepository;
-import jruizsilva.concesionaria.persistance.mapper.ICustomerMapper;
+import jruizsilva.concesionaria.utils.PasswordGenerator;
 
 public class CustomerServiceImpl implements ICustomerService {
   private final ICustomerRepository customerRepository;
+  private final PasswordGenerator passwordGenerator;
 
-  public CustomerServiceImpl(ICustomerRepository customerRepository, ICustomerMapper customerMapper) {
+  public CustomerServiceImpl(ICustomerRepository customerRepository, PasswordGenerator passwordGenerator) {
     this.customerRepository = customerRepository;
+    this.passwordGenerator = passwordGenerator;
   }
 
   @Override
@@ -25,8 +28,19 @@ public class CustomerServiceImpl implements ICustomerService {
   }
 
   @Override
-  public CustomerDto save(CustomerDto brandCarDto) {
-    return customerRepository.save(brandCarDto);
+  public Optional<CustomerDto> findByEmail(String email) {
+    return customerRepository.findCustomerByEmail(email);
+  }
+
+  @Override
+  public ResponseCustomerDto save(CustomerDto newCustomer) {
+    String passwordGenerated = passwordGenerator.generatePassword();
+    newCustomer.setPassword(passwordGenerated);
+    newCustomer.setActive(1);
+
+    customerRepository.save(newCustomer);
+
+    return new ResponseCustomerDto(passwordGenerated);
   }
 
   @Override

@@ -2,15 +2,18 @@ package jruizsilva.concesionaria.utils;
 
 import java.security.SecureRandom;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class PasswordGenerator {
 
-  private static final String CHARACTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-={}[]|;:,./<>?";
+  private final String CHARACTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-={}[]|;:,./<>?";
 
-  public static String generatePassword() {
+  public String generatePassword() {
     StringBuilder password = new StringBuilder();
     SecureRandom random = new SecureRandom();
 
-    for (int i = 0; i < 16; i++) {
+    for (int i = 0; i < 8; i++) {
       int randomIndex = random.nextInt(CHARACTERS.length());
       char character = CHARACTERS.charAt(randomIndex);
 

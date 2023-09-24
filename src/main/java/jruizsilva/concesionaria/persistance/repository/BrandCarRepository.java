@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Repository
-public class RepositoryBrandCar implements IBrandCarRepository {
+public class BrandCarRepository implements IBrandCarRepository {
   private final IBrandCarRepositoryCrud repositoryBrandCarJpa;
   private final IBrandCarMapper mapperBrandCar;
 

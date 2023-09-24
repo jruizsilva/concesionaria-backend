@@ -1,49 +1,50 @@
 package jruizsilva.concesionaria.domain.service;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
 import jruizsilva.concesionaria.domain.dto.BrandCarDto;
 import jruizsilva.concesionaria.domain.repository.IBrandCarRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
 public class BrandCarServiceImpl implements IBrandCarService {
-  private final IBrandCarRepository repositoryBrandCar;
-  
+  private final IBrandCarRepository brandCarRepository;
+
   @Override
   public List<BrandCarDto> findAll() {
-    return repositoryBrandCar.findAll();
+    return brandCarRepository.findAll();
   }
-  
+
   @Override
   public Optional<BrandCarDto> findById(Integer id) {
-    return repositoryBrandCar.findById(id);
+    return brandCarRepository.findById(id);
   }
-  
+
   @Override
   public BrandCarDto save(BrandCarDto brandCarDto) {
-    return repositoryBrandCar.save(brandCarDto);
+    return brandCarRepository.save(brandCarDto);
   }
-  
+
   @Override
   public Optional<BrandCarDto> update(BrandCarDto brandCarDto) {
-    if (repositoryBrandCar.findById(brandCarDto.getId())
-                          .isEmpty()) {
+    if (brandCarRepository.findById(brandCarDto.getId())
+        .isEmpty()) {
       return Optional.empty();
     }
-    return Optional.of(repositoryBrandCar.save(brandCarDto));
+    return Optional.of(brandCarRepository.save(brandCarDto));
   }
-  
+
   @Override
   public boolean deleteById(Integer id) {
-    if (repositoryBrandCar.findById(id)
-                          .isEmpty()) {
+    if (brandCarRepository.findById(id)
+        .isEmpty()) {
       return false;
     }
-    repositoryBrandCar.deleteById(id);
+    brandCarRepository.deleteById(id);
     return true;
   }
 }

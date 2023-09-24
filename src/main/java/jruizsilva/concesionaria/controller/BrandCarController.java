@@ -21,24 +21,24 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping(path = "/brands-car")
 public class BrandCarController {
-  private final IBrandCarService serviceBrandCar;
+  private final IBrandCarService brandCarService;
 
   @GetMapping
   public ResponseEntity<List<BrandCarDto>> findAll() {
     return ResponseEntity.status(HttpStatus.OK)
-        .body(serviceBrandCar.findAll());
+        .body(brandCarService.findAll());
   }
 
   @GetMapping(path = "/{id}")
   public ResponseEntity<BrandCarDto> findById(@PathVariable Integer id) {
-    return ResponseEntity.of(serviceBrandCar.findById(id));
+    return ResponseEntity.of(brandCarService.findById(id));
   }
 
   @PostMapping
   public ResponseEntity<BrandCarDto> save(@RequestBody BrandCarDto body) {
     try {
       return ResponseEntity.status(HttpStatus.CREATED)
-          .body(serviceBrandCar.save(body));
+          .body(brandCarService.save(body));
     } catch (Exception e) {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST)
           .build();
@@ -47,11 +47,11 @@ public class BrandCarController {
 
   @PutMapping
   public ResponseEntity<BrandCarDto> update(@RequestBody BrandCarDto body) {
-    return ResponseEntity.of(serviceBrandCar.update(body));
+    return ResponseEntity.of(brandCarService.update(body));
   }
 
   @DeleteMapping(path = "/{id}")
   public ResponseEntity<Boolean> deleteById(@PathVariable Integer id) {
-    return new ResponseEntity<>(serviceBrandCar.deleteById(id) ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+    return new ResponseEntity<>(brandCarService.deleteById(id) ? HttpStatus.OK : HttpStatus.NOT_FOUND);
   }
 }

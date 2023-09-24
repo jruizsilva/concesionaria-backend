@@ -1,6 +1,6 @@
 package jruizsilva.concesionaria.domain.service;
 
-import jruizsilva.concesionaria.domain.dto.DtoBrandCar;
+import jruizsilva.concesionaria.domain.dto.BrandCarDto;
 import jruizsilva.concesionaria.domain.repository.IRepositoryBrandCar;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,27 +14,27 @@ public class ServiceBrandCarImpl implements IServiceBrandCar {
   private final IRepositoryBrandCar repositoryBrandCar;
   
   @Override
-  public List<DtoBrandCar> findAll() {
+  public List<BrandCarDto> findAll() {
     return repositoryBrandCar.findAll();
   }
   
   @Override
-  public Optional<DtoBrandCar> findById(Integer id) {
+  public Optional<BrandCarDto> findById(Integer id) {
     return repositoryBrandCar.findById(id);
   }
   
   @Override
-  public DtoBrandCar save(DtoBrandCar dtoBrandCar) {
-    return repositoryBrandCar.save(dtoBrandCar);
+  public BrandCarDto save(BrandCarDto brandCarDto) {
+    return repositoryBrandCar.save(brandCarDto);
   }
   
   @Override
-  public Optional<DtoBrandCar> update(DtoBrandCar dtoBrandCar) {
-    if (repositoryBrandCar.findById(dtoBrandCar.getId())
+  public Optional<BrandCarDto> update(BrandCarDto brandCarDto) {
+    if (repositoryBrandCar.findById(brandCarDto.getId())
                           .isEmpty()) {
       return Optional.empty();
     }
-    return Optional.of(repositoryBrandCar.save(dtoBrandCar));
+    return Optional.of(repositoryBrandCar.save(brandCarDto));
   }
   
   @Override

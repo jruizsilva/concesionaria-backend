@@ -1,6 +1,6 @@
 package jruizsilva.concesionaria.persistance.mapper;
 
-import jruizsilva.concesionaria.domain.dto.DtoBrandCar;
+import jruizsilva.concesionaria.domain.dto.BrandCarDto;
 import jruizsilva.concesionaria.persistance.entity.EntityBrandCar;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -29,16 +29,16 @@ public interface IMapperBrandCar {
       source = "description",
       target = "description"
   )
-  DtoBrandCar toDtoBrandCar(EntityBrandCar entityBrandCar);
+  BrandCarDto toDtoBrandCar(EntityBrandCar entityBrandCar);
   
   /**
    * Convierte un Dto BrandCar a una entidad
    *
-   * @param dtoBrandCar Entidad a convertir
+   * @param brandCarDto Entidad a convertir
    * @return Dto convertidos
    */
   @InheritInverseConfiguration
-  EntityBrandCar toEntityBrandCar(DtoBrandCar dtoBrandCar);
+  EntityBrandCar toEntityBrandCar(BrandCarDto brandCarDto);
   
   /**
    * Convierte entidades MarcasCoche a una lista Dto
@@ -46,13 +46,13 @@ public interface IMapperBrandCar {
    * @param marcasCocheEntities Entidades a transformar
    * @return Lista de Dto
    */
-  List<DtoBrandCar> toDtoListBrandCard(List<EntityBrandCar> marcasCocheEntities);
+  List<BrandCarDto> toDtoListBrandCard(List<EntityBrandCar> marcasCocheEntities);
   
   /**
    * Convierte Dto BrandCar a una lista de entidades
    *
-   * @param dtoBrandCars Entidades a transformar
+   * @param brandCarDtos Entidades a transformar
    * @return Lista de entidades
    */
-  List<EntityBrandCar> toEntityListBrand(List<DtoBrandCar> dtoBrandCars);
+  List<EntityBrandCar> toEntityListBrand(List<BrandCarDto> brandCarDtos);
 }

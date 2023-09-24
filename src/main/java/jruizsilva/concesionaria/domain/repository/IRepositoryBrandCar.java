@@ -1,16 +1,16 @@
 package jruizsilva.concesionaria.domain.repository;
 
-import jruizsilva.concesionaria.domain.dto.DtoBrandCar;
+import jruizsilva.concesionaria.domain.dto.BrandCarDto;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface IRepositoryBrandCar {
-    List<DtoBrandCar> findAll();
+    List<BrandCarDto> findAll();
 
-    Optional<DtoBrandCar> findById(Integer id);
+    Optional<BrandCarDto> findById(Integer id);
 
-    DtoBrandCar save(DtoBrandCar dtoBrandCar);
+    BrandCarDto save(BrandCarDto brandCarDto);
 
     void deleteById(Integer id);
 }

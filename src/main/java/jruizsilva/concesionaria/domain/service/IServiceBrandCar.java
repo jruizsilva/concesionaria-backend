@@ -1,18 +1,18 @@
 package jruizsilva.concesionaria.domain.service;
 
-import jruizsilva.concesionaria.domain.dto.DtoBrandCar;
+import jruizsilva.concesionaria.domain.dto.BrandCarDto;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface IServiceBrandCar {
-  List<DtoBrandCar> findAll();
+  List<BrandCarDto> findAll();
   
-  Optional<DtoBrandCar> findById(Integer id);
+  Optional<BrandCarDto> findById(Integer id);
   
-  DtoBrandCar save(DtoBrandCar dtoBrandCar);
+  BrandCarDto save(BrandCarDto brandCarDto);
   
-  Optional<DtoBrandCar> update(DtoBrandCar dtoBrandCar);
+  Optional<BrandCarDto> update(BrandCarDto brandCarDto);
   
   boolean deleteById(Integer idBrandCar);
 }

@@ -1,6 +1,6 @@
 package jruizsilva.concesionaria.persistance.repository;
 
-import jruizsilva.concesionaria.domain.dto.DtoBrandCar;
+import jruizsilva.concesionaria.domain.dto.BrandCarDto;
 import jruizsilva.concesionaria.domain.repository.IRepositoryBrandCar;
 import jruizsilva.concesionaria.persistance.entity.EntityBrandCar;
 import jruizsilva.concesionaria.persistance.mapper.IMapperBrandCar;
@@ -13,23 +13,23 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Repository
 public class RepositoryBrandCar implements IRepositoryBrandCar {
-  private final IRepositoryBrandCarJpa repositoryBrandCarJpa;
+  private final IRepositoryJpaBrandCar repositoryBrandCarJpa;
   private final IMapperBrandCar mapperBrandCar;
   
   @Override
-  public List<DtoBrandCar> findAll() {
+  public List<BrandCarDto> findAll() {
     return mapperBrandCar.toDtoListBrandCard(repositoryBrandCarJpa.findAll());
   }
   
   @Override
-  public Optional<DtoBrandCar> findById(Integer id) {
+  public Optional<BrandCarDto> findById(Integer id) {
     return repositoryBrandCarJpa.findById(id)
                                 .map(mapperBrandCar::toDtoBrandCar);
   }
   
   @Override
-  public DtoBrandCar save(DtoBrandCar dtoBrandCar) {
-    EntityBrandCar entity = mapperBrandCar.toEntityBrandCar(dtoBrandCar);
+  public BrandCarDto save(BrandCarDto brandCarDto) {
+    EntityBrandCar entity = mapperBrandCar.toEntityBrandCar(brandCarDto);
     return mapperBrandCar.toDtoBrandCar(repositoryBrandCarJpa.save(entity));
   }
   

@@ -13,12 +13,12 @@ public class CarDto {
   private Double modelYear;
   private String color;
   private Double horsepower;
-  private Double numberDoor;
+  private Integer numberDoor;
   private Double engineDisplacement;
   private String transmission;
   private String fuelType;
-  private Double numberSeats;
-  private Double traction;
+  private Integer numberSeats;
+  private Integer traction;
   private String steering;
   private String category;
   private String imagePath;

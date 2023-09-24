@@ -1,12 +1,12 @@
 package jruizsilva.concesionaria.persistance.repository;
 
-import jruizsilva.concesionaria.domain.dto.CustomerDto;
-import jruizsilva.concesionaria.domain.repository.IRepositoryCustomer;
-
 import java.util.List;
 import java.util.Optional;
 
-public class RepositoryCustomer implements IRepositoryCustomer {
+import jruizsilva.concesionaria.domain.dto.CustomerDto;
+import jruizsilva.concesionaria.domain.repository.ICustomerRepository;
+
+public class CustomerRepository implements ICustomerRepository {
   @Override
   public List<CustomerDto> findAll() {
     return null;

@@ -1,7 +1,7 @@
 package jruizsilva.concesionaria.domain.service;
 
 import jruizsilva.concesionaria.domain.dto.BrandCarDto;
-import jruizsilva.concesionaria.domain.repository.IRepositoryBrandCar;
+import jruizsilva.concesionaria.domain.repository.IBrandCarRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,8 +10,8 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-public class ServiceBrandCarImpl implements IServiceBrandCar {
-  private final IRepositoryBrandCar repositoryBrandCar;
+public class BrandCarServiceImpl implements IBrandCarService {
+  private final IBrandCarRepository repositoryBrandCar;
   
   @Override
   public List<BrandCarDto> findAll() {
